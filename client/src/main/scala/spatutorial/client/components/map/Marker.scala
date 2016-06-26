@@ -25,5 +25,9 @@ object MarkerOptions {
 
 @js.native
 trait Marker extends js.Object {
-  def addTo(map: LeafletMap): Unit = js.native
+
+  def addTo(map: LeafletMap): Marker = js.native
+
+  def bindPopup(popupContent: String): Popup = js.native
+
 }

@@ -15,5 +15,7 @@ object Leaflet extends js.Object {
   def icon(options: IconOptions): Icon = js.native
 
   def point(x: Double, y: Double, round: Boolean): Point = js.native
+
+  def popup(): Popup = js.native
 }
 

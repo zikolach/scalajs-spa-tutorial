@@ -2,9 +2,9 @@ package spatutorial.client.components
 
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react.{Callback, ReactComponentB}
+import org.scalajs.dom
 import org.scalajs.dom.raw.HTMLDivElement
 import spatutorial.client.components.map._
-
 
 object LeafletMap {
 
@@ -22,7 +22,7 @@ object LeafletMap {
 
   val LeafletMap = ReactComponentB[MapProps]("Map")
     .render_P(p =>
-      <.div(^.id := "map", ^.height := "300px")
+      <.div(^.id := "map", ^.height := mapHeight)
     )
     .domType[HTMLDivElement]
     .componentDidMount(scope => Callback {
@@ -30,10 +30,13 @@ object LeafletMap {
       val map = Leaflet.map(id)
       DefaultIcon.imagePath = "assets/lib/leaflet/images"
       map.setView(new LatLng(51.505, -0.09), 13)
-      Leaflet.marker(new LatLng(51.505, -0.09), MarkerOptions(new DefaultIcon())).addTo(map)
+      val marker = Leaflet.marker(new LatLng(51.505, -0.09), MarkerOptions(new DefaultIcon())).addTo(map)
+      marker.bindPopup("Hi, I am a Popup!").openPopup()
       demoTileLayer.addTo(map)
     })
     .build
+
+  private def mapHeight: String = s"${dom.window.innerHeight - GlobalStyles.navbarHeight}px"
 
   def apply(props: MapProps) = LeafletMap(props)
 }

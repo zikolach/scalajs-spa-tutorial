@@ -52,7 +52,7 @@ object SPAMain extends js.JSApp {
         )
       ),
       // currently active module is shown in this container
-      <.div(^.className := "container", r.render())
+      <.div(^.className := "container-fluid", r.render())
     )
   }
 
