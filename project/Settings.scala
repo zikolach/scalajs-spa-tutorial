@@ -36,6 +36,7 @@ object Settings {
     val jQuery = "1.11.1"
     val bootstrap = "3.3.6"
     val chartjs = "2.1.3"
+    val leaflet = "0.7.7"
 
     val playScripts = "0.5.0"
   }
@@ -54,6 +55,7 @@ object Settings {
     "com.vmunier" %% "play-scalajs-scripts" % versions.playScripts,
     "org.webjars" % "font-awesome" % "4.3.0-1" % Provided,
     "org.webjars" % "bootstrap" % versions.bootstrap % Provided,
+    "org.webjars" % "leaflet" % versions.leaflet % Provided,
     "com.lihaoyi" %% "utest" % versions.uTest % Test
   ))
 
@@ -68,6 +70,7 @@ object Settings {
     "com.lihaoyi" %%% "utest" % versions.uTest % Test
   ))
 
+
   /** Dependencies for external JS libs that are bundled into a single .js file according to dependency order */
   val jsDependencies = Def.setting(Seq(
     "org.webjars.bower" % "react" % versions.react / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
@@ -75,6 +78,7 @@ object Settings {
     "org.webjars" % "jquery" % versions.jQuery / "jquery.js" minified "jquery.min.js",
     "org.webjars" % "bootstrap" % versions.bootstrap / "bootstrap.js" minified "bootstrap.min.js" dependsOn "jquery.js",
     "org.webjars" % "chartjs" % versions.chartjs / "Chart.js" minified "Chart.min.js",
-    "org.webjars" % "log4javascript" % versions.log4js / "js/log4javascript_uncompressed.js" minified "js/log4javascript.js"
+    "org.webjars" % "log4javascript" % versions.log4js / "js/log4javascript_uncompressed.js" minified "js/log4javascript.js",
+    "org.webjars" % "leaflet" % versions.leaflet / "leaflet-src.js" minified "leaflet.js"
   ))
 }
